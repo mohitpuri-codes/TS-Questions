@@ -1,5 +1,5 @@
-function checkValid(str:string):boolean{
-  const map = new Map<string,number>() 
+function checkValid(str: string): boolean {
+  const map = new Map<string,number>()
   for (const element of str) {
     if(element === '(' ){
       if(map.has(element)){
@@ -7,7 +7,8 @@ function checkValid(str:string):boolean{
       }else{
         map.set(element,1)
       }
-    }else if( element === ')' ){
+    }
+    else if( element === ')' ){
       map.set('(',map.get('(')!-1);
     }
     if(element === '[' ){
@@ -29,18 +30,43 @@ function checkValid(str:string):boolean{
       map.set('{',map.get('{')!-1);
     }
   }
+
   for (const [key,value] of map) {
     if(value!==0) {
-      console.log(`${key},${value}`);     
+      console.log(`${key},${value}`);
       return false}
-
   }
-  return true
+  return true;
 }
 
-console.log(checkValid('()'));
-console.log(checkValid('())'));
-console.log(checkValid('(())'));
-console.log(checkValid('()()'));
-console.log(checkValid('({()})'));
-console.log(checkValid('({()(})'));
+function isValid(s: string) {
+  let st: string[] = [];
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === "(" || s[i] === "{" || s[i] === "[") {
+      st.push(s[i]);
+    } else {
+      if (
+        st.length > 0 &&
+        ((st[st.length - 1] === "(" && s[i] === ")") ||
+          (st[st.length - 1] === "{" && s[i] === "}") ||
+          (st[st.length - 1] === "[" && s[i] === "]"))
+      ) {
+        st.pop();
+      } else {
+        return false;
+      }
+    }
+  }
+  if (st.length === 0) return true;
+  return false;
+}
+
+// console.log(isValid("(())"));
+// console.log(isValid("((){}}})"));
+
+console.log(checkValid("()"));
+console.log(checkValid("())"));
+console.log(checkValid("(())"));
+console.log(checkValid("()()"));
+console.log(checkValid("({()})"));
+console.log(checkValid("({()(})"));

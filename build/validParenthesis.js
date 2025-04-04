@@ -44,9 +44,33 @@ function checkValid(str) {
     }
     return true;
 }
-console.log(checkValid('()'));
-console.log(checkValid('())'));
-console.log(checkValid('(())'));
-console.log(checkValid('()()'));
-console.log(checkValid('({()})'));
-console.log(checkValid('({()(})'));
+function isValid(s) {
+    let st = [];
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === "(" || s[i] === "{" || s[i] === "[") {
+            st.push(s[i]);
+        }
+        else {
+            if (st.length > 0 &&
+                ((st[st.length - 1] === "(" && s[i] === ")") ||
+                    (st[st.length - 1] === "{" && s[i] === "}") ||
+                    (st[st.length - 1] === "[" && s[i] === "]"))) {
+                st.pop();
+            }
+            else {
+                return false;
+            }
+        }
+    }
+    if (st.length === 0)
+        return true;
+    return false;
+}
+// console.log(isValid("(())"));
+// console.log(isValid("((){}}})"));
+console.log(checkValid("()"));
+console.log(checkValid("())"));
+console.log(checkValid("(())"));
+console.log(checkValid("()()"));
+console.log(checkValid("({()})"));
+console.log(checkValid("({()(})"));
