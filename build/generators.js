@@ -6,14 +6,14 @@ function* sequenceGenerator() {
 
 let generator = sequenceGenerator();
 
-let one = generator.next();
-let two = generator.next();
-let three = generator.next();
-console.log(one);
-console.log(two);
-console.log(three);
+// let one = generator.next();
+// let two = generator.next();
+// let three = generator.next();
+// console.log(one);
+// console.log(two);
+// console.log(three);
 
-// console.log(0,...generator); // 0,1,2
+console.log("first", ...generator); // 0,1,2
 
 // generators are iterable using for..of loop
 for (const element of generator) {

@@ -29,3 +29,13 @@ const user31231 = {
 };
 const updatedUser = updateUser(user31231, { name: "Bhavik Thanki", age: 26 });
 console.log(updateUser(user31231, { id: 312 }));
+const objek = {
+    "/": "/",
+    "/admin": "/admin",
+    "/routes": "/routes",
+};
+const attr = {
+    age: 21,
+    name: "mohit",
+    isPlayer: true,
+};

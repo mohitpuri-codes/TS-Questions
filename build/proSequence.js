@@ -20,7 +20,6 @@ async function exeSeq(arr) {
         res.push(now.toLocaleString());
         console.log(i);
     }
-    console.log("jijij");
     console.log(res);
 }
 exeSeq([promise10, promise11, promise12]);
